@@ -19,8 +19,9 @@ export default function Accordian() {
       if (prev.indexOf(id) === -1) {
         return [...prev, id];
       }
-      return prev.filter((x) => x === id);
+      return prev.filter((x) => x !== id);
     });
+    console.log(multiSelectArray);
   };
   console.log(enableMultiSelect);
   return (
