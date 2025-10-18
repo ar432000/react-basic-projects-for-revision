@@ -15,14 +15,16 @@ export default function Accordian() {
   };
 
   const handleMultiSelect = (id) => {
-    if (multiSelectArray.indexOf(id) === -1) {
-      multiSelectArray.push(id);
-      setMultiSelectArray(multiSelectArray);
-      console.log(multiSelectArray);
+    const multiSelectArrayCopy = [...multiSelectArray];
+
+    if (multiSelectArrayCopy.indexOf(id) === -1) {
+      multiSelectArrayCopy.push(id);
+      setMultiSelectArray(multiSelectArrayCopy);
+      console.log(multiSelectArrayCopy);
     } else {
-      multiSelectArray.splice(multiSelectArray.indexOf(id), 1);
-      setMultiSelectArray(multiSelectArray);
-      console.log(multiSelectArray);
+      multiSelectArrayCopy.splice(multiSelectArrayCopy.indexOf(id), 1);
+      setMultiSelectArray(multiSelectArrayCopy);
+      console.log(multiSelectArrayCopy);
     }
   };
   console.log(enableMultiSelect);
