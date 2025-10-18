@@ -1,15 +1,23 @@
 .wrapper{
     display:flex;
     height:100vh;
-    width:100vw;
+    width:80vw;
     justify-content:center;
     align-items:center;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
 }
 
 .accordian{
     width: 500px;
-
 }
+
+.wrapper button{
+    background:#614101;
+}
+
+
 
 .item{
     background:#614101;
