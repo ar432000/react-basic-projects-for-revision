@@ -8,24 +8,19 @@ export default function Accordian() {
   const [multiSelectArray, setMultiSelectArray] = useState([]);
 
   const handleSelectItem = (id) => {
-    if (selected === id) {
-      setSelected(null);
-    } else setSelected(id);
-    // console.log(id);
+    setSelected((prev) => {
+      if (prev === id) return null;
+      return id;
+    });
   };
 
   const handleMultiSelect = (id) => {
-    const multiSelectArrayCopy = [...multiSelectArray];
-
-    if (multiSelectArrayCopy.indexOf(id) === -1) {
-      multiSelectArrayCopy.push(id);
-      setMultiSelectArray(multiSelectArrayCopy);
-      console.log(multiSelectArrayCopy);
-    } else {
-      multiSelectArrayCopy.splice(multiSelectArrayCopy.indexOf(id), 1);
-      setMultiSelectArray(multiSelectArrayCopy);
-      console.log(multiSelectArrayCopy);
-    }
+    setMultiSelectArray((prev) => {
+      if (prev.indexOf(id) === -1) {
+        return [...prev, id];
+      }
+      return prev.filter((x) => x === id);
+    });
   };
   console.log(enableMultiSelect);
   return (
