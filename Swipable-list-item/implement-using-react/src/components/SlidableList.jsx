@@ -31,14 +31,14 @@ function SlidableListShowActions() {
 
     const deltaX = e.clientX - startXRef.current;
     const final = lockedPosition + deltaX;
-    let newLock = final;
+    let newLock;
 
     // Clamp to bounds
     if (final > 120) {
       newLock = 120;
     } else if (final < -120) {
       newLock = -120;
-    }
+    } else newLock = final;
 
     setLockedPosition(newLock);
     e.currentTarget.style.transition = "transform 0.1s ease"; // Re-enable transition
