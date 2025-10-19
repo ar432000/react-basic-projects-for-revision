@@ -9,6 +9,7 @@ function SlidableListShowActions() {
   const handleMouseDown = (e) => {
     dragging.current = true;
     startXRef.current = e.clientX;
+    console.log("Mouse Down at:", startXRef.current);
     e.currentTarget.style.transition = "none"; // disable transition while drag
   };
 
@@ -16,7 +17,12 @@ function SlidableListShowActions() {
     if (!dragging.current) return;
 
     const deltaX = e.clientX - startXRef.current;
-    setTranslateX(lockedPosition + deltaX);
+    const final = lockedPosition + deltaX;
+
+    // Allow free movement within bounds during drag
+    if (final >= -120 && final <= 120) {
+      setTranslateX(final);
+    }
   };
 
   const handleMouseUp = (e) => {
@@ -25,15 +31,17 @@ function SlidableListShowActions() {
 
     const deltaX = e.clientX - startXRef.current;
     const final = lockedPosition + deltaX;
-    let newLock = lockedPosition;
-    if (final > 100) {
-      newLock = 120; // right action ✅
-    } else if (final < -100) {
-      newLock = -120; // left action 🗑️
-    } else if (final > -60 && final < 60) {
-      newLock = 0; // center position or back to center
+    let newLock = final;
+
+    // Clamp to bounds
+    if (final > 120) {
+      newLock = 120;
+    } else if (final < -120) {
+      newLock = -120;
     }
+
     setLockedPosition(newLock);
+    e.currentTarget.style.transition = "transform 0.1s ease"; // Re-enable transition
     setTranslateX(newLock);
   };
 
@@ -49,7 +57,7 @@ function SlidableListShowActions() {
           justifyContent: "space-between",
           alignItems: "center",
           background: "#f0f0f0",
-          borderRadius: "0 15px",
+          borderRadius: "10px",
           fontSize: "22px",
         }}
       >
@@ -68,8 +76,9 @@ function SlidableListShowActions() {
           textAlign: "center",
           boxShadow: "0 2px 6px rgba(0,0,0,0.25)",
           transform: `translateX(${translateX}px)`,
-          transition: dragging.current ? "none" : "transform 0.25s ease",
+          transition: "transform 0.1s ease",
           cursor: "grab",
+          selector: "none",
         }}
       >
         Drag me left or right
