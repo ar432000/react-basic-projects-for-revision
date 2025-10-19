@@ -38,7 +38,7 @@ function SlidableListShowActions() {
       newLock = 120;
     } else if (final < -120) {
       newLock = -120;
-    } else newLock = final;
+    } else newLock = 0;
 
     setLockedPosition(newLock);
     e.currentTarget.style.transition = "transform 0.1s ease"; // Re-enable transition
