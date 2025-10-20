@@ -19,8 +19,8 @@ If you are developing a production application, we recommend using TypeScript wi
 
 # This is Accordian component
 
-![alt text](AccordianMultiSelectDisabled.png) ![alt text](AccordianMultiSelectEnabled.png.png)
+![alt text](AccordianMultiSelectDisabled.png) ![alt text](AccordianMultiSelectEnabled.png)
 
 # this is how it looks like
 
-![alt text](RandomColorGenerator.png.png)
+![alt text](RandomColorGenerator.png)
