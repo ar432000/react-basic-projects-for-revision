@@ -16,3 +16,9 @@ Note: This will impact Vite dev & build performances.
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+# This is Slide List component to show Action items like delete and green check
+
+- swiping left shows bin icon: 🗑️, on click it deletes that item
+- swiping right shows green check icon: ✅ ,currently nothing has been implemented.
+  ![alt text](Images/slidable-list.png)
