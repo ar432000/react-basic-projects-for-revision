@@ -1,0 +1,35 @@
+.star-rating-container{
+    width:100vw;
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    
+
+}
+
+.star-wrapper{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+}
+
+.star-item{
+    padding:10px;
+}
+.single-star{
+    font-size:70px;
+    cursor:pointer;
+    color:gray;
+    
+}
+
+.active{
+    color:#fff700;
+}
+.inactive{
+    color:gray;
+}

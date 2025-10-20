@@ -1,6 +1,7 @@
 import "./App.css";
 import Accordian from "./components/Accordian/Accordian";
 import RandomColorGenerator from "./components/ColorGenerator/RandomColorGenerator";
+import StarRating from "./components/StarRating/StarRating";
 
 function App() {
   return (
@@ -13,6 +14,11 @@ function App() {
         <br />
         {/* Random Color Generator component */}
         <RandomColorGenerator />
+        <br />
+        <hr />
+        <br />
+        {/* Star Rating components */}
+        <StarRating starRatingSize={10} />
       </div>
     </>
   );
