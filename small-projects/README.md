@@ -21,6 +21,6 @@ If you are developing a production application, we recommend using TypeScript wi
 
 ![alt text](AccordianMultiSelectDisabled.png) ![alt text](AccordianMultiSelectEnabled.png)
 
-# this is how it looks like
+# This is Random HEX and RGB color Generator
 
 ![alt text](RandomColorGenerator.png)
