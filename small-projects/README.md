@@ -19,12 +19,12 @@ If you are developing a production application, we recommend using TypeScript wi
 
 # This is Accordian component
 
-![alt text](AccordianMultiSelectDisabled.png) ![alt text](AccordianMultiSelectEnabled.png)
+![alt text](Images/AccordianMultiSelectDisabled.png) ![alt text](Images/AccordianMultiSelectEnabled.png)
 
 # This is Random HEX and RGB color Generator
 
-![alt text](RandomColorGenerator.png)
+![alt text](Images/RandomColorGenerator.png)
 
 # This is Star Rating components
 
-![alt text](StarRating.png)
+![alt text](Images/StarRating.png)
