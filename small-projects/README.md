@@ -24,3 +24,7 @@ If you are developing a production application, we recommend using TypeScript wi
 # This is Random HEX and RGB color Generator
 
 ![alt text](RandomColorGenerator.png)
+
+# This is Star Rating components
+
+![alt text](StarRating.png)
