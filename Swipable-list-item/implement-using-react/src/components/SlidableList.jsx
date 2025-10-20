@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-function SlidableListShowActions() {
+function SlidableListShowActions({ text, handleDeleteItem }) {
   const [translateX, setTranslateX] = useState(0);
   const [lockedPosition, setLockedPosition] = useState(0); // it could be -120 ,0, 120 as difference between startX and endX
   const startXRef = useRef(0);
@@ -46,7 +46,7 @@ function SlidableListShowActions() {
   };
 
   return (
-    <div style={{ position: "relative", width: "300px", margin: "40px auto" }}>
+    <div className="slidable-item" style={{ position: "relative" }}>
       <div
         style={{
           position: "absolute",
@@ -62,7 +62,12 @@ function SlidableListShowActions() {
         }}
       >
         <span style={{ color: "green" }}>✅</span>
-        <span style={{ color: "red" }}>🗑️</span>
+        <span
+          onClick={handleDeleteItem}
+          style={{ color: "red", cursor: "pointer" }}
+        >
+          🗑️
+        </span>
       </div>
 
       <div
@@ -81,7 +86,7 @@ function SlidableListShowActions() {
           selector: "none",
         }}
       >
-        Drag me left or right
+        {text}
       </div>
     </div>
   );

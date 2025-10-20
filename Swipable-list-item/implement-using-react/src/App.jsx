@@ -1,10 +1,10 @@
-import SlidableListShowActions from "./components/SlidableList";
+import DisplayLists from "./components/DisplayLists";
 
 function App() {
   return (
     <>
       <div>
-        <SlidableListShowActions />
+        <DisplayLists />
       </div>
     </>
   );
