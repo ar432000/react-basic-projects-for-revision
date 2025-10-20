@@ -1,10 +1,9 @@
 .wrapper{
     display:flex;
     height:auto;
-    width:80vw;
+    width:100vw;
     justify-content:center;
     align-items:center;
-    display:flex;
     flex-direction: column;
     gap:20px;
     background:white
@@ -17,6 +16,13 @@
 .wrapper button{
     margin-top:10px;
     background:#614101;
+    border-radius: 10px;
+    height:30px;
+    width:300px;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:larger;
+    font-weight: bolder;
 }
 
 

@@ -27,7 +27,7 @@ function RandomColorGenerator() {
       hexColor +=
         hexColorArray[Math.floor(Math.random() * hexColorArray.length)];
     }
-    console.log(hexColor);
+    // console.log(hexColor);
     setColor(hexColor);
   };
 
@@ -37,13 +37,8 @@ function RandomColorGenerator() {
     let b_color = Math.floor(Math.random() * 256);
 
     let rgbColor = `rgb(${r_color},${g_color},${b_color})`;
-    console.log(rgbColor);
+    // console.log(rgbColor);
     setColor(rgbColor);
-  };
-
-  const handleGenerate_RandomColor = () => {
-    console.log("random color");
-    colorType === "hex" ? handleGenerate_HexColor() : handleGenerate_RGBColor();
   };
 
   useEffect(() => {
@@ -56,7 +51,13 @@ function RandomColorGenerator() {
       <div className="btn-list">
         <button onClick={() => setColorType("hex")}>Hex Color</button>
         <button onClick={() => setColorType("rgb")}>RGB Color</button>
-        <button onClick={() => handleGenerate_RandomColor()}>
+        <button
+          onClick={
+            colorType === "hex"
+              ? handleGenerate_HexColor
+              : handleGenerate_RGBColor
+          }
+        >
           Random Color
         </button>
       </div>

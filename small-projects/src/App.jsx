@@ -7,7 +7,10 @@ function App() {
     <>
       <div className="App">
         {/* Accordian component */}
-        {/* <Accordian /> */}
+        <Accordian />
+        <br />
+        <hr />
+        <br />
         {/* Random Color Generator component */}
         <RandomColorGenerator />
       </div>
