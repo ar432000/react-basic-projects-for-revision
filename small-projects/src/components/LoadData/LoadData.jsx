@@ -4,28 +4,29 @@ import { useEffect, useState, useRef } from "react";
 import "./loadData.css";
 function LoadData() {
   // url- https://dummyjson.com/products?limit=20&skip=10
+  const PAGE_SIZE = 50;
   const [products, setProducts] = useState([]);
   const [loadCount, setLoadCount] = useState(0);
   const [disableLoadButton, setDisableLoadButton] = useState(false);
   const [loading, setLoading] = useState(false);
   const loadMoreRef = useRef(null);
-
+  const [dataObject, setDataObject] = useState(null);
   useEffect(() => {
     const controller = new AbortController();
 
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const previousCount = products.length;
         const response = await fetch(
-          `https://dummyjson.com/products?limit=20&skip=${
-            loadCount === 0 ? 0 : loadCount * 20
+          `https://dummyjson.com/products?limit=${PAGE_SIZE}&skip=${
+            loadCount === 0 ? 0 : loadCount * PAGE_SIZE
           }`,
           { signal: controller.signal }
         );
         const data = await response.json();
         if (data && data.products && data.products.length) {
           setProducts((prevData) => [...prevData, ...data.products]);
+          setDataObject(data);
           setLoading(false);
 
           // Scroll to new products after a brief delay to ensure DOM update
@@ -45,17 +46,20 @@ function LoadData() {
           console.log(error.message);
         }
       }
+      //finally {
+      //   setLoading(false);
+      // }
     };
 
     fetchProducts();
-
     return () => controller.abort();
   }, [loadCount]);
 
   useEffect(() => {
-    if (products && products.length === 194) setDisableLoadButton(true);
-  }, [products]);
-
+    if (dataObject && typeof dataObject.total === "number") {
+      setDisableLoadButton(products.length === dataObject.total);
+    }
+  }, [products, dataObject]);
   if (loading)
     return <div className="products-loader">Products is loading ...</div>;
   return (
