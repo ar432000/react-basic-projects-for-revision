@@ -28,3 +28,7 @@ If you are developing a production application, we recommend using TypeScript wi
 # This is Star Rating components
 
 ![alt text](Images/StarRating.png)
+
+# This is Image Slider components
+
+![alt text](Images/ImageSlider.png)
