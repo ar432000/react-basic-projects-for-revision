@@ -1,0 +1,104 @@
+import { useEffect, useState, useRef } from "react";
+
+//load css
+import "./loadData.css";
+function LoadData() {
+  // url- https://dummyjson.com/products?limit=20&skip=10
+  const [products, setProducts] = useState([]);
+  const [loadCount, setLoadCount] = useState(0);
+  const [disableLoadButton, setDisableLoadButton] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const loadMoreRef = useRef(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const previousCount = products.length;
+        const response = await fetch(
+          `https://dummyjson.com/products?limit=20&skip=${
+            loadCount === 0 ? 0 : loadCount * 20
+          }`,
+          { signal: controller.signal }
+        );
+        const data = await response.json();
+        if (data && data.products && data.products.length) {
+          setProducts((prevData) => [...prevData, ...data.products]);
+          setLoading(false);
+
+          // Scroll to new products after a brief delay to ensure DOM update
+          if (loadCount > 0) {
+            setTimeout(() => {
+              if (loadMoreRef.current) {
+                loadMoreRef.current.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }
+            }, 100);
+          }
+        }
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          console.log(error.message);
+        }
+      }
+    };
+
+    fetchProducts();
+
+    return () => controller.abort();
+  }, [loadCount]);
+
+  useEffect(() => {
+    if (products && products.length === 194) setDisableLoadButton(true);
+  }, [products]);
+
+  if (loading)
+    return <div className="products-loader">Products is loading ...</div>;
+  return (
+    <div className="load-more-container">
+      <div>
+        <h3>This is the product listing page..</h3>
+      </div>
+      <div className="product-container">
+        {products && products.length
+          ? products.map((product, index) => (
+              <div
+                key={index}
+                className="product"
+                ref={
+                  index === products.length - 20 && index > 0
+                    ? loadMoreRef
+                    : null
+                }
+              >
+                <img src={product.thumbnail} alt={product.title} />
+                <div>
+                  <p>{product.description}</p>
+                </div>
+              </div>
+            ))
+          : null}
+        {loading && (
+          <div className="products-loader">Loading more products...</div>
+        )}
+      </div>
+      <div className="button-container">
+        <button
+          disabled={disableLoadButton || loading}
+          onClick={() => setLoadCount((prev) => prev + 1)}
+        >
+          {loading ? "Loading..." : "Load Next Data"}
+        </button>
+        {disableLoadButton ? (
+          <p>You have reached the end of products.</p>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
+export default LoadData;

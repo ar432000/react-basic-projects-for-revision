@@ -32,3 +32,7 @@ If you are developing a production application, we recommend using TypeScript wi
 # This is Image Slider components
 
 ![alt text](Images/ImageSlider.png)
+
+# This is Load More Data components on clicking the button
+
+![alt text](Images/LoadMoreData.png)

@@ -2,6 +2,7 @@ import "./App.css";
 import Accordian from "./components/Accordian/Accordian";
 import RandomColorGenerator from "./components/ColorGenerator/RandomColorGenerator";
 import ImageSlider from "./components/ImageSlider/ImageSlider";
+import LoadData from "./components/LoadData/LoadData";
 import StarRating from "./components/StarRating/StarRating";
 
 function App() {
@@ -23,7 +24,11 @@ function App() {
         <br />
         <hr />
         <br /> */}
-        <ImageSlider />
+        {/* <ImageSlider /> */}
+        {/* <br />
+        <hr />
+        <br /> */}
+        <LoadData />
       </div>
     </>
   );
